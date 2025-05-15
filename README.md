@@ -1,4 +1,4 @@
-# Project Name (Replace with your project's name)
+# Jira Ticket Acceptance Criteria Validator
 
 ## Overview
 
