@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Project Name (Replace with your project's name)
+
+## Overview
+
+This project provides a tool to validate Git diffs against the acceptance criteria defined in Jira tickets. It helps
+ensure that changes made in a Git commit or pull request align with the requirements of the associated Jira issue before
+they are merged.
+
+## Features
+
+* **Git Diff Validation:** Automatically analyzes Git diffs to identify changes.
+* **Jira Integration:** Connects to Jira to retrieve acceptance criteria for specified tickets.
+* **Criterion Matching:** Compares the content of the Git diff with the Jira acceptance criteria to identify potential
+  discrepancies.
+* **Reporting:** Generates reports indicating whether the diff conforms to the criteria and highlighting any issues
+  found.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+* Node.js (v22+)
+* Git
+* Access to your Jira instance
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository: `git clone <repository_url>`
+2. Navigate to the project directory: `cd <project_directory>`
+3. Install dependencies: `pnpm install`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Configuration
 
-## Learn More
+This tool requires access to your Jira instance to retrieve ticket details. You'll need to provide your Jira domain,
+email, and API token.
 
-To learn more about Next.js, take a look at the following resources:
+1. **Create a `.env` file:** 
+    
+    In the root directory of the project, create a file named `.env.local`. This file
+    will store your sensitive credentials and should not be committed to your version control.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Add your credentials to `.env`:** 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    Open the `.env` file and add the following lines, replacing the
+    placeholder values with your actual Jira credentials:
 
-## Deploy on Vercel
+   ```
+   OPENAI_API_KEY=sk-proj-your-openai-key
+   JIRA_DOMAIN=your-jira-domain.atlassian.net
+   JIRA_EMAIL=your-email@example.com
+   JIRA_API_TOKEN=your-jira-api-token
+   ```
+    * `OPENAI_API_KEY`: Your OpenAI key, generated from https://platform.openai.com/api-keys
+    * `JIRA_DOMAIN`: Your Jira instance domain (e.g., `your-company.atlassian.net`).
+    * `JIRA_EMAIL`: The email address associated with your Jira account.
+    * `JIRA_API_TOKEN`: A Jira API token. You can generate an API token in your Jira account settings.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+By following these steps, the tool will be able to connect to your Jira instance and retrieve the necessary information
+for validating your Git diffs.
